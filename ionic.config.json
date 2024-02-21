@@ -1,0 +1,7 @@
+{
+  "name": "MyGO-GUI",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

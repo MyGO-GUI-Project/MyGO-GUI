@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MyGO-GUI</string>
+    <string name="title_activity_main">MyGO-GUI</string>
+    <string name="package_name">simu.mygo.gui</string>
+    <string name="custom_url_scheme">simu.mygo.gui</string>
+</resources>
