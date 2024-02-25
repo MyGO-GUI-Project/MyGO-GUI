@@ -45,7 +45,8 @@ async function resolve(url: string, data: string): Promise<void> {
     <ion-content>
       <ion-header>
         <ion-toolbar>
-          <ion-title>MyGO</ion-title>
+          <ion-title slot="start">MyGO</ion-title>
+          <ion-searchbar></ion-searchbar>
           <ion-button slot="primary" @click="logIn(data)">登录</ion-button>
           <ion-button slot="secondary" @click="signUp(data)">注册</ion-button>
         </ion-toolbar>
