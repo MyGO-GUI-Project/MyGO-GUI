@@ -41,16 +41,15 @@ async function resolve(url: string, data: string): Promise<void> {
 <template>
   <ion-page>
     <ion-content>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title slot="start">MyGO</ion-title>
-          <ion-searchbar></ion-searchbar>
-          <ion-button slot="primary" @click="logIn(data)">登录</ion-button>
-          <ion-button slot="secondary" @click="signUp(data)">注册</ion-button>
-        </ion-toolbar>
-      </ion-header>
-
       <ion-tabs>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title slot="start">MyGO</ion-title>
+            <ion-searchbar></ion-searchbar>
+            <ion-button slot="primary" @click="logIn(data)">登录</ion-button>
+            <ion-button slot="secondary" @click="signUp(data)">注册</ion-button>
+          </ion-toolbar>
+        </ion-header>
         <ion-router-outlet></ion-router-outlet>
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="home" href="/home">
