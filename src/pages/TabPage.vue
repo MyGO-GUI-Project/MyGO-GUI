@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { IonHeader, IonContent, IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon } from '@ionic/vue';
-import { home, people, wallet } from 'ionicons/icons';
-import axios from 'axios';
+import { IonHeader, IonContent, IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon } from '@ionic/vue'
+import { home, people, wallet } from 'ionicons/icons'
+import axios from 'axios'
+import { useTokenStore } from '@/stores'
 
+const tokenStore = useTokenStore()
 /*
   To-do:
   1. 将 logIn 和 signUp 返回的 Authorization 存储在 Pinia 里
@@ -11,9 +13,8 @@ import axios from 'axios';
   4. 完成 getBalanace 接口的调用
 */
 
-const data: string =
-  `{
-    "username":"test1",
+const data: string = `{
+    "username":"test7",
     "password":"test1"
 }`
 
@@ -25,18 +26,15 @@ async function logIn(data: string): Promise<void> {
 
 async function signUp(data: string): Promise<void> {
   await resolve('http://47.113.194.28:8888/api/register', data)
-  await resolve(`http://47.113.194.28:8888/api/blockchain/createWallet?passphrase=${passphrase}`, '')
+
+  // WARN 不应该在注册时就创建钱包
+  // await resolve(`http://47.113.194.28:8888/api/blockchain/createWallet?passphrase=${passphrase}`, '')
 }
 
 async function resolve(url: string, data: string): Promise<void> {
-  await axios
-    .post(url, data)
-    .then((response) => {
-      console.log(response.data)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+  const res = await axios.post(url, data)
+  const token = res.headers.authorization as string
+  tokenStore.setToken(token)
 }
 </script>
 
