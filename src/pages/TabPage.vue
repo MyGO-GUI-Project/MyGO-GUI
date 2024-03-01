@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { IonHeader, IonContent, IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon } from '@ionic/vue'
 import { home, people, wallet } from 'ionicons/icons'
-import axios from 'axios'
+import http from '@/lib/http'
 import { useTokenStore } from '@/stores'
 
 const tokenStore = useTokenStore()
@@ -21,18 +21,18 @@ const data: string = `{
 const passphrase: string = 'test1'
 
 async function logIn(data: string): Promise<void> {
-  await resolve('http://47.113.194.28:8888/api/login', data)
+  await resolve('/login', data)
 }
 
 async function signUp(data: string): Promise<void> {
-  await resolve('http://47.113.194.28:8888/api/register', data)
+  await resolve('/register', data)
 
   // WARN 不应该在注册时就创建钱包
   // await resolve(`http://47.113.194.28:8888/api/blockchain/createWallet?passphrase=${passphrase}`, '')
 }
 
 async function resolve(url: string, data: string): Promise<void> {
-  const res = await axios.post(url, data)
+  const res = await http.post(url, data)
   const token = res.headers.authorization as string
   tokenStore.setToken(token)
 }
