@@ -1,5 +1,17 @@
 <script setup lang="ts">
-import { IonAccordionGroup, IonAccordion, IonItem, IonLabel, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonPage } from '@ionic/vue';
+import {
+  IonAccordionGroup,
+  IonAccordion,
+  IonItem,
+  IonLabel,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonContent,
+  IonPage,
+} from '@ionic/vue'
 </script>
 
 <template>
@@ -83,9 +95,7 @@ import { IonAccordionGroup, IonAccordion, IonItem, IonLabel, IonCard, IonCardCon
           <ion-card-title>心理咨询</ion-card-title>
           <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
         </ion-card-header>
-        <ion-card-content>
-          关注老年人心理健康，提供专业的心理支持和咨询。志愿者通过倾听和沟通，帮助老年人处理情绪问题，保持良好的心理状态
-        </ion-card-content>
+        <ion-card-content> 关注老年人心理健康，提供专业的心理支持和咨询。志愿者通过倾听和沟通，帮助老年人处理情绪问题，保持良好的心理状态 </ion-card-content>
       </ion-card>
 
       <ion-card>
