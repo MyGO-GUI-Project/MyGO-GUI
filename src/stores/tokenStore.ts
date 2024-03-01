@@ -35,6 +35,7 @@ const useTokenStore = defineStore('token', {
   },
   actions: {
     setToken(token: string) {
+      token = token.replace(TOKEN_PREFIX, '')
       _setToken(token)
       this.raw = token
       this.userInfo = _parseToken(token)
@@ -74,8 +75,7 @@ function _getToken() {
   return token
 }
 
-const _setToken = (token: string) => {
-  token = token.replace(TOKEN_PREFIX, '')
+function _setToken(token: string) {
   localStorage.setItem('token', token)
 }
 

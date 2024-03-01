@@ -1,5 +1,15 @@
 <script setup lang="ts">
-import { IonHeader, IonContent, IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon } from '@ionic/vue'
+import {
+  IonHeader,
+  IonContent,
+  IonPage,
+  IonTabs,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonLabel,
+  IonIcon,
+} from '@ionic/vue'
 import { home, people, wallet } from 'ionicons/icons'
 import http from '@/lib/http'
 import { useTokenStore } from '@/stores'
@@ -10,7 +20,7 @@ const tokenStore = useTokenStore()
   1. 将 logIn 和 signUp 返回的 Authorization 存储在 Pinia 里
   2. 给 transfer 和 createWallet 添加 Authorization 头
   3. 将 userName 和 passWord 存储在 Pinia 里
-  4. 完成 getBalanace 接口的调用
+  4. 完成 getBalance 接口的调用
 */
 
 const data: string = `{
@@ -18,7 +28,7 @@ const data: string = `{
     "password":"test1"
 }`
 
-const passphrase: string = 'test1'
+// const passphrase: string = 'test1'
 
 async function logIn(data: string): Promise<void> {
   await resolve('/login', data)
