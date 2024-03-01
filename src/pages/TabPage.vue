@@ -32,7 +32,7 @@ async function signUp(data: string): Promise<void> {
 }
 
 async function resolve(url: string, data: string): Promise<void> {
-  const res = await http.post(url, data)
+  const res = await http.post('http://47.113.194.28:8888/api' + url, data)
   const token = res.headers.authorization as string
   tokenStore.setToken(token)
 }
