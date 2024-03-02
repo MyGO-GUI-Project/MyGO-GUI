@@ -10,8 +10,10 @@ interface Response {
 export const HTTP = Object.freeze({
   OK: 200,
   BAD_REQUEST: 400,
-  UNAUTHORIZED: 403,
-  SERVER_ERROR: 500,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500,
 })
 
 const http = axios.create({
@@ -27,9 +29,7 @@ http.interceptors.request.use((config) => {
 })
 
 http.interceptors.response.use(
-  (response) => {
-    return response
-  },
+  (response) => response,
   (error) => {
     const data = error.response?.data as Response
     if (data.code === HTTP.UNAUTHORIZED) {
