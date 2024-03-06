@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import http from '@/lib/http'
 import {
   IonCard,
   IonCardContent,
@@ -11,32 +10,9 @@ import {
   IonAccordion,
   IonItem,
   IonLabel,
-  IonButton,
   IonContent,
   IonPage,
 } from '@ionic/vue'
-import axios from 'axios'
-
-const data: string = `{
-    "passphrase":"123",
-    "toName":"demo",
-    "amount":"10000"
-}`
-
-// async function transfer(data: string): Promise<void> {
-//   await resolve('/blockchain/transfer', data)
-// }
-
-async function resolve(url: string, data: string): Promise<void> {
-  await http
-    .post(url, data)
-    .then((response) => {
-      console.log(response.data)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-}
 </script>
 
 <template>
