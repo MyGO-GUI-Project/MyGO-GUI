@@ -36,9 +36,6 @@ async function logIn(data: string): Promise<void> {
 
 async function signUp(data: string): Promise<void> {
   await resolve('/register', data)
-
-  // WARN 不应该在注册时就创建钱包
-  // await resolve(`http://47.113.194.28:8888/api/blockchain/createWallet?passphrase=${passphrase}`, '')
 }
 
 async function resolve(url: string, data: string): Promise<void> {
