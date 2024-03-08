@@ -17,7 +17,7 @@ import {
 
 <template>
   <ion-page>
-    <ion-content :fullscreen="true">
+    <ion-content>
       <ion-card id="container">
         <ion-card-content>
           <ion-item>

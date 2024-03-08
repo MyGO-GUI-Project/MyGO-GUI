@@ -1,34 +1,37 @@
 <script setup lang="ts">
+import http from '@/libs/http'
+import { useToken } from '@/stores'
+import { home, people, wallet, idCardOutline, logInOutline } from 'ionicons/icons'
+
 import {
+  IonButtons,
   IonHeader,
-  IonContent,
+  IonFooter,
   IonPage,
   IonTabs,
   IonRouterOutlet,
+  IonToolbar,
+  IonSearchbar,
+  IonButton,
   IonTabBar,
   IonTabButton,
   IonLabel,
   IonIcon,
 } from '@ionic/vue'
-import { home, people, wallet } from 'ionicons/icons'
-import http from '@/lib/http'
-import { useTokenStore } from '@/stores'
 
-const tokenStore = useTokenStore()
-/*
-  To-do:
-  1. 将 logIn 和 signUp 返回的 Authorization 存储在 Pinia 里
-  2. 给 transfer 和 createWallet 添加 Authorization 头
-  3. 将 userName 和 passWord 存储在 Pinia 里
-  4. 完成 getBalance 接口的调用
-*/
+/**
+ * To-do:
+ * 1. 将 logIn 和 signUp 返回的 Authorization 存储在 Pinia 里
+ * 2. 给 createWallet 添加 Authorization 头
+ * 3. 将 userName 和 passWord 存储在 Pinia 里
+ * 4. 完成 getBalance 接口的调用
+ */
 
+const tokenStore = useToken()
 const data: string = `{
     "username":"test7",
     "password":"test1"
 }`
-
-// const passphrase: string = 'test1'
 
 async function logIn(data: string): Promise<void> {
   await resolve('/login', data)
@@ -47,17 +50,25 @@ async function resolve(url: string, data: string): Promise<void> {
 
 <template>
   <ion-page>
-    <ion-content>
-      <ion-tabs>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title slot="start">MyGO</ion-title>
-            <ion-searchbar></ion-searchbar>
-            <ion-button slot="primary" @click="logIn(data)">登录</ion-button>
-            <ion-button slot="secondary" @click="signUp(data)">注册</ion-button>
-          </ion-toolbar>
-        </ion-header>
-        <ion-router-outlet></ion-router-outlet>
+    <ion-tabs>
+      <ion-header>
+        <ion-toolbar>
+          <h2 slot="start">MyGO</h2>
+          <ion-searchbar />
+          <ion-buttons slot="end">
+            <ion-button fill="solid" @click="logIn(data)">
+              <ion-icon slot="start" :icon="logInOutline" />登录</ion-button
+            >
+            <ion-button fill="solid" @click="signUp(data)">
+              <ion-icon slot="start" :icon="idCardOutline" />注册</ion-button
+            >
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-router-outlet />
+
+      <ion-footer>
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="home" href="/home">
             <ion-icon :icon="home" />
@@ -74,13 +85,19 @@ async function resolve(url: string, data: string): Promise<void> {
             <ion-label>资金</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
-      </ion-tabs>
-    </ion-content>
+      </ion-footer>
+    </ion-tabs>
   </ion-page>
 </template>
 
 <style scoped lang="less">
 ion-button {
   margin-right: 10px;
+}
+
+h2 {
+  margin-left: 10px;
+  padding: 0px 10px;
+  font-weight: bold;
 }
 </style>

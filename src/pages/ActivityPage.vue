@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
+import { add } from 'ionicons/icons'
+
 import {
   IonFab,
   IonFabButton,
@@ -12,25 +15,23 @@ import {
   IonImg,
   IonLabel,
   InfiniteScrollCustomEvent,
-} from '@ionic/vue';
-import { add } from 'ionicons/icons';
-import { reactive } from 'vue';
+} from '@ionic/vue'
 
-const items: string[] = reactive(['']);
+const items: string[] = reactive([''])
 
 const generateItems = () => {
-  const count = items.length + 1;
+  const count = items.length + 1
   for (let i = 0; i < 50; i++) {
-    items.push(`活动 ${count + i}`);
+    items.push(`活动 ${count + i}`)
   }
-};
+}
 
 const ionInfinite = (ev: InfiniteScrollCustomEvent) => {
-  generateItems();
-  setTimeout(() => ev.target.complete(), 500);
-};
+  generateItems()
+  setTimeout(() => ev.target.complete(), 500)
+}
 
-generateItems();
+generateItems()
 </script>
 
 <template>

@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
-import { RouteRecordRaw } from 'vue-router';
+import { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from '@ionic/vue-router'
+
 import TabPage from '@/pages/TabPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
@@ -13,23 +14,21 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'home',
-        component: () => import('@/pages/HomePage.vue')
+        component: () => import('@/pages/HomePage.vue'),
       },
       {
         path: 'activity',
-        component: () => import('@/pages/ActivityPage.vue')
+        component: () => import('@/pages/ActivityPage.vue'),
       },
       {
         path: 'finance',
-        component: () => import('@/pages/FinancePage.vue')
-      }
-    ]
-  }
+        component: () => import('@/pages/FinancePage.vue'),
+      },
+    ],
+  },
 ]
 
-const router = createRouter({
+export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
 })
-
-export default router

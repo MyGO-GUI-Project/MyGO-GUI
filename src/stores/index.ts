@@ -1,3 +1,3 @@
-import useTokenStore from './tokenStore'
+import useToken from './token'
 
-export { useTokenStore }
+export { useToken }

@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios'
-import { useTokenStore } from '@/stores'
+import { useToken } from '@/stores'
 
 interface Response {
   code: number
@@ -21,7 +21,7 @@ const http = axios.create({
 })
 
 http.interceptors.request.use((config) => {
-  const token = useTokenStore().token
+  const token = useToken().token
   if (token) {
     config.headers.Authorization = token
   }
@@ -33,7 +33,7 @@ http.interceptors.response.use(
   (error) => {
     const data = error.response?.data as Response
     if (data.code === HTTP.UNAUTHORIZED) {
-      useTokenStore().clearToken()
+      useToken().clearToken()
       window.location.reload()
     }
     console.error(data)

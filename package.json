@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "test:e2e": "cypress run",
     "test:unit": "vitest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@capacitor/android": "next",
