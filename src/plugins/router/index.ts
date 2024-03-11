@@ -24,6 +24,14 @@ const routes: Array<RouteRecordRaw> = [
         path: 'finance',
         component: () => import('@/pages/FinancePage.vue'),
       },
+      {
+        path: 'search',
+        component: () => import('@/pages/SearchPage.vue')
+      },
+      {
+        path: 'login',
+        component: () => import('@/pages/LoginPage.vue')
+      },
     ],
   },
 ]
