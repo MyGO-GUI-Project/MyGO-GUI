@@ -32,9 +32,9 @@ import {
   IonIcon
 } from '@ionic/vue'
 
-import SearchPage from '@/modals/SearchModal.vue'
-import LoginPage from '@/modals/LoginModal.vue'
-import SignupPage from '@/modals/SignupModal.vue'
+import SearchModal from '@/modals/SearchModal.vue'
+import LoginModal from '@/modals/LoginModal.vue'
+import SignupModal from '@/modals/SignupModal.vue'
 </script>
 
 <template>
@@ -49,19 +49,19 @@ import SignupPage from '@/modals/SignupModal.vue'
               <ion-icon aria-hidden slot="start" :icon="searchOutline" />
               <ion-label>搜索</ion-label>
             </ion-button>
-            <search-page />
+            <SearchModal />
 
             <ion-button id="login-ion-modal-trigger">
               <ion-icon aria-hidden slot="start" :icon="logInOutline" />
               <ion-label>登录</ion-label>
             </ion-button>
-            <login-page />
+            <LoginModal />
 
             <ion-button id="signup-ion-modal-trigger">
               <ion-icon aria-hidden slot="start" :icon="personOutline" />
               <ion-label>注册</ion-label>
             </ion-button>
-            <signup-page />
+            <SignupModal />
           </ion-buttons>
         </ion-toolbar>
       </ion-header>

@@ -34,7 +34,6 @@ import {
               <div class="ion-padding" slot="content">62.93</div>
             </ion-accordion>
           </ion-accordion-group>
-          <!-- <ion-button @click="transfer(data)">转账</ion-button> -->
         </ion-card-content>
       </ion-card>
 

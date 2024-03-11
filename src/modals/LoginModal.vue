@@ -35,7 +35,7 @@ async function logInRequest(): Promise<void> {
 </script>
 
 <template>
-  <ion-modal trigger="login-ion-modal-trigger">
+  <ion-modal trigger="login-ion-modal-trigger" keep-contents-mounted>
     <ion-card class="loginpage-login-panel">
       <ion-item class="loginpage-login-panel-label">
         <ion-label>账号名</ion-label>
