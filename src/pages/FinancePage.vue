@@ -70,9 +70,3 @@ import {
     </ion-content>
   </ion-page>
 </template>
-
-<style scoped lang="less">
-#container {
-  margin-top: 70px;
-}
-</style>
