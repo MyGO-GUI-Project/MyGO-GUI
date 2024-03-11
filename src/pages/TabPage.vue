@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { IonHeader, IonContent, IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon } from '@ionic/vue'
-import { home, people, wallet } from 'ionicons/icons'
+import { home, people, wallet, search } from 'ionicons/icons'
 import http from '@/lib/http'
 import { useTokenStore } from '@/stores'
 
@@ -45,8 +45,8 @@ async function resolve(url: string, data: string): Promise<void> {
         <ion-header>
           <ion-toolbar>
             <ion-title slot="start">MyGO</ion-title>
-            <ion-searchbar></ion-searchbar>
-            <ion-button slot="primary" @click="logIn(data)">登录</ion-button>
+            <ion-searchbar href="/search"></ion-searchbar>
+            <ion-button slot="primary" href="/login" target="self">登录</ion-button>
             <ion-button slot="secondary" @click="signUp(data)">注册</ion-button>
           </ion-toolbar>
         </ion-header>
@@ -65,6 +65,11 @@ async function resolve(url: string, data: string): Promise<void> {
           <ion-tab-button tab="finance" href="/finance">
             <ion-icon :icon="wallet" />
             <ion-label>资金</ion-label>
+          </ion-tab-button>
+          
+          <ion-tab-button tab="search" href="/search">
+            <ion-icon :icon="search" />
+            <ion-label>搜索</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
       </ion-tabs>
