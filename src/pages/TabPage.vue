@@ -18,7 +18,7 @@ import {
   IonLabel,
   IonIcon,
 } from '@ionic/vue'
-import router from '@/plugins/router';
+import router from '@/plugins/router'
 
 /**
  * To-do:
@@ -48,10 +48,9 @@ async function resolve(url: string, data: string): Promise<void> {
   tokenStore.setToken(token)
 }
 
-function redirectToLoginPage(){
-  router.replace("/login");
+function redirectToLoginPage() {
+  router.replace('/login')
 }
-
 </script>
 
 <template>
@@ -90,7 +89,7 @@ function redirectToLoginPage(){
             <ion-icon :icon="wallet" />
             <ion-label>资金</ion-label>
           </ion-tab-button>
-          
+
           <ion-tab-button tab="search" href="/search">
             <ion-icon :icon="search" />
             <ion-label>搜索</ion-label>

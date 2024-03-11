@@ -26,11 +26,11 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'search',
-        component: () => import('@/pages/SearchPage.vue')
+        component: () => import('@/pages/SearchPage.vue'),
       },
       {
         path: 'login',
-        component: () => import('@/pages/LoginPage.vue')
+        component: () => import('@/pages/LoginPage.vue'),
       },
     ],
   },
