@@ -1,33 +1,23 @@
 <script setup lang="ts">
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonAvatar, IonAccordionGroup, IonAccordion, IonItem, IonLabel, IonButton, IonContent, IonPage } from '@ionic/vue';
-import axios from 'axios';
-
-const data: string =
-  `{
-    "passphrase":"123",
-    "toName":"demo",
-    "amount":"10000"
-}`
-
-async function transfer(data: string): Promise<void> {
-  await resolve('http://47.113.194.28:8888/api/blockchain/transfer', data)
-}
-
-async function resolve(url: string, data: string): Promise<void> {
-  await axios
-    .post(url, data)
-    .then((response) => {
-      console.log(response.data)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-}
+import {
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonAvatar,
+  IonAccordionGroup,
+  IonAccordion,
+  IonItem,
+  IonLabel,
+  IonContent,
+  IonPage,
+} from '@ionic/vue'
 </script>
 
 <template>
   <ion-page>
-    <ion-content :fullscreen="true">
+    <ion-content>
       <ion-card id="container">
         <ion-card-content>
           <ion-item>
@@ -44,7 +34,7 @@ async function resolve(url: string, data: string): Promise<void> {
               <div class="ion-padding" slot="content">62.93</div>
             </ion-accordion>
           </ion-accordion-group>
-          <ion-button @click="transfer(data)">转账</ion-button>
+          <!-- <ion-button @click="transfer(data)">转账</ion-button> -->
         </ion-card-content>
       </ion-card>
 

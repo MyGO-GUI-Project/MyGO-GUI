@@ -1,36 +1,48 @@
 <script setup lang="ts">
-import {
-  IonFab,
-  IonFabButton,
-  IonPage,
-  IonContent,
-  IonInfiniteScroll,
-  IonInfiniteScrollContent,
-  IonList,
-  IonItem,
-  IonAvatar,
-  IonImg,
-  IonLabel,
-  InfiniteScrollCustomEvent,
-} from '@ionic/vue';
-import { add } from 'ionicons/icons';
-import { reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue'
+import { add } from 'ionicons/icons'
 
-const items: string[] = reactive(['']);
+import { IonFab, IonFabButton, IonPage, IonContent, IonList, IonItem, IonLabel } from '@ionic/vue'
+import { HTTP, get } from '@/libs/http'
+import { Transaction } from '@/libs/types'
 
-const generateItems = () => {
-  const count = items.length + 1;
-  for (let i = 0; i < 50; i++) {
-    items.push(`活动 ${count + i}`);
+/**
+ * To-do:
+ * 1. Wait for the backend finish the count api to get the total number of transactions
+ *    Depending on the total number of transactions, we can calculate the total number of pages
+ *    Then we can add selector to let the user select the page they want to see
+ *
+ * 2. Add a loading spinner when the user is fetching the transactions
+ *
+ * 3. When user click the transaction, we should redirect the user to the transaction detail page
+ *
+ * Tips:
+ *    Only the admin can see all the transactions, the normal user can only see passed transactions
+ */
+
+const isLoading = ref(true)
+
+/**
+ * this index is used to fetch more transactions, starting from 0
+ * each time we fetch, we increase the index by 1
+ * and each batch of transactions is 50
+ */
+const index = ref(0)
+
+let items = reactive<Transaction[]>([])
+
+const fetchTransactions = async () => {
+  const res = await get(`/transaction/limit?index=${index.value}`)
+  if (res.code == HTTP.OK) {
+    isLoading.value = false
+    console.log(res.data.length)
+    return res.data as Transaction[]
   }
-};
+}
 
-const ionInfinite = (ev: InfiniteScrollCustomEvent) => {
-  generateItems();
-  setTimeout(() => ev.target.complete(), 500);
-};
-
-generateItems();
+onMounted(async () => {
+  items = (await fetchTransactions()) ?? []
+})
 </script>
 
 <template>
@@ -43,15 +55,13 @@ generateItems();
       </ion-fab>
       <ion-list>
         <ion-item v-for="(item, index) in items" :key="index">
-          <ion-avatar slot="start">
+          <!-- <ion-avatar slot="start">
             <ion-img :src="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
-          </ion-avatar>
-          <ion-label>{{ item }}</ion-label>
+          </ion-avatar> -->
+          <ion-label>{{ item.title }}</ion-label>
+          <ion-label>{{ item.createdAt }}</ion-label>
         </ion-item>
       </ion-list>
-      <ion-infinite-scroll @ionInfinite="ionInfinite">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
     </ion-content>
   </ion-page>
 </template>

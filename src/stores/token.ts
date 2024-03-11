@@ -35,6 +35,7 @@ const useTokenStore = defineStore('token', {
   },
   actions: {
     setToken(token: string) {
+      token = token.replace(TOKEN_PREFIX, '')
       _setToken(token)
       this.raw = token
       this.userInfo = _parseToken(token)
@@ -54,7 +55,7 @@ function _parseToken(token: string | null) {
   const strings = token.split('.')
   let userInfo: any
   try {
-    userInfo = JSON.parse(decodeURIComponent(window.atob(strings[1].replace(/-/g, '+').replace(/_/g, '/'))))
+    userInfo = JSON.parse(decodeURIComponent(atob(strings[1].replace(/-/g, '+').replace(/_/g, '/'))))
   } catch (e) {
     console.log('Token invalid')
     _clearToken()
@@ -74,8 +75,7 @@ function _getToken() {
   return token
 }
 
-const _setToken = (token: string) => {
-  token = token.replace(TOKEN_PREFIX, '')
+function _setToken(token: string) {
   localStorage.setItem('token', token)
 }
 
