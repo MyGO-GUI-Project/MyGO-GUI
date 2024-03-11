@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import http from '@/libs/http'
 import { useToken } from '@/stores'
-import { home, people, wallet, idCardOutline, logInOutline, searchOutline } from 'ionicons/icons'
+
+import {
+  homeOutline,
+  peopleOutline,
+  walletOutline,
+  idCardOutline,
+  logInOutline,
+  searchOutline,
+} from 'ionicons/icons'
 
 import {
   IonButtons,
@@ -18,7 +26,6 @@ import {
   IonLabel,
   IonIcon,
 } from '@ionic/vue'
-import router from '@/plugins/router'
 
 /**
  * To-do:
@@ -34,10 +41,6 @@ const data: string = `{
     "password":"test1"
 }`
 
-async function logIn(data: string): Promise<void> {
-  await resolve('/login', data)
-}
-
 async function signUp(data: string): Promise<void> {
   await resolve('/register', data)
 }
@@ -46,10 +49,6 @@ async function resolve(url: string, data: string): Promise<void> {
   const res = await http.post(url, data)
   const token = res.headers.authorization as string
   tokenStore.setToken(token)
-}
-
-function redirectToLoginPage() {
-  router.replace('/login')
 }
 </script>
 
@@ -60,13 +59,13 @@ function redirectToLoginPage() {
         <ion-toolbar>
           <ion-title slot="start">MyGO</ion-title>
           <ion-buttons slot="end">
-            <ion-button fill="solid" href="/search">
+            <ion-button href="/search" target="_self">
               <ion-icon slot="start" :icon="searchOutline" />搜索</ion-button
             >
-            <ion-button fill="solid" href="/login">
+            <ion-button href="/login" target="_self">
               <ion-icon slot="start" :icon="logInOutline" />登录</ion-button
             >
-            <ion-button fill="solid" @click="signUp(data)">
+            <ion-button @click="signUp(data)">
               <ion-icon slot="start" :icon="idCardOutline" />注册</ion-button
             >
           </ion-buttons>
@@ -78,17 +77,17 @@ function redirectToLoginPage() {
       <ion-footer>
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="home" href="/home">
-            <ion-icon :icon="home" />
+            <ion-icon :icon="homeOutline" />
             <ion-label>主页</ion-label>
           </ion-tab-button>
 
           <ion-tab-button tab="activity" href="/activity">
-            <ion-icon :icon="people" />
+            <ion-icon :icon="peopleOutline" />
             <ion-label>活动</ion-label>
           </ion-tab-button>
 
           <ion-tab-button tab="finance" href="/finance">
-            <ion-icon :icon="wallet" />
+            <ion-icon :icon="walletOutline" />
             <ion-label>资金</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
