@@ -58,16 +58,21 @@ async function resolve(url: string, data: string): Promise<void> {
       <ion-header>
         <ion-toolbar>
           <ion-title slot="start">MyGO</ion-title>
-          <ion-buttons slot="end">
+          <ion-buttons class="ion-margin-end" slot="end">
             <ion-button href="/search" target="_self">
-              <ion-icon slot="start" :icon="searchOutline" />搜索</ion-button
-            >
+              <ion-icon slot="start" :icon="searchOutline" />
+              <ion-label>搜索</ion-label>
+            </ion-button>
+
             <ion-button href="/login" target="_self">
-              <ion-icon slot="start" :icon="logInOutline" />登录</ion-button
-            >
+              <ion-icon slot="start" :icon="logInOutline" />
+              <ion-label>登录</ion-label>
+            </ion-button>
+
             <ion-button @click="signUp(data)">
-              <ion-icon slot="start" :icon="idCardOutline" />注册</ion-button
-            >
+              <ion-icon slot="start" :icon="idCardOutline" />
+              <ion-label>注册</ion-label>
+            </ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -95,9 +100,3 @@ async function resolve(url: string, data: string): Promise<void> {
     </ion-tabs>
   </ion-page>
 </template>
-
-<style scoped lang="less">
-ion-button {
-  margin-right: 10px;
-}
-</style>

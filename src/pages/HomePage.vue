@@ -23,7 +23,6 @@ import {
     <ion-content>
       <ion-card class="homepage-notice-board">
         <ion-title class="homepage-notice-board-header">公告</ion-title>
-        <ion-img :src="'https://picsum.photos/80/80?random=114514'" class="homepage-notice-board-image" />
       </ion-card>
 
       <ion-card class="homepage-dashboard">
