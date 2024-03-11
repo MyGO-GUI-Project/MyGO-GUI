@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import http from '@/libs/http'
-import { useToken } from '@/stores'
+/**
+ * To-do:
+ * 1. 将 logIn 和 signUp 返回的 Authorization 存储在 Pinia 里
+ * 2. 给 createWallet 添加 Authorization 头
+ * 3. 将 userName 和 passWord 存储在 Pinia 里
+ * 4. 完成 getBalance 接口的调用
+ */
 
 import {
   homeOutline,
@@ -27,29 +32,9 @@ import {
   IonIcon,
 } from '@ionic/vue'
 
-/**
- * To-do:
- * 1. 将 logIn 和 signUp 返回的 Authorization 存储在 Pinia 里
- * 2. 给 createWallet 添加 Authorization 头
- * 3. 将 userName 和 passWord 存储在 Pinia 里
- * 4. 完成 getBalance 接口的调用
- */
-
-const tokenStore = useToken()
-const data: string = `{
-    "username":"test7",
-    "password":"test1"
-}`
-
-async function signUp(data: string): Promise<void> {
-  await resolve('/register', data)
-}
-
-async function resolve(url: string, data: string): Promise<void> {
-  const res = await http.post(url, data)
-  const token = res.headers.authorization as string
-  tokenStore.setToken(token)
-}
+import SearchPage from './SearchPage.vue'
+import LoginPage from './LoginPage.vue'
+import SignupPage from './SignupPage.vue'
 </script>
 
 <template>
@@ -59,20 +44,23 @@ async function resolve(url: string, data: string): Promise<void> {
         <ion-toolbar>
           <ion-title slot="start">MyGO</ion-title>
           <ion-buttons class="ion-margin-end" slot="end">
-            <ion-button href="/search" target="_self">
+            <ion-button id="search-ion-modal-trigger">
               <ion-icon slot="start" :icon="searchOutline" />
               <ion-label>搜索</ion-label>
             </ion-button>
+            <search-page />
 
-            <ion-button href="/login" target="_self">
+            <ion-button id="login-ion-modal-trigger">
               <ion-icon slot="start" :icon="logInOutline" />
               <ion-label>登录</ion-label>
             </ion-button>
+            <login-page />
 
-            <ion-button @click="signUp(data)">
+            <ion-button id="signup-ion-modal-trigger">
               <ion-icon slot="start" :icon="idCardOutline" />
               <ion-label>注册</ion-label>
             </ion-button>
+            <signup-page />
           </ion-buttons>
         </ion-toolbar>
       </ion-header>

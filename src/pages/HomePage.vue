@@ -2,7 +2,6 @@
 import {
   IonHeader,
   IonTitle,
-  IonImg,
   IonToolbar,
   IonAccordionGroup,
   IonAccordion,

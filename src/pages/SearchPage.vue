@@ -16,7 +16,7 @@ import {
   IonGrid,
   IonCol,
   IonContent,
-  IonPage,
+  IonModal,
   IonSpinner,
   IonList,
   IonItem,
@@ -77,7 +77,7 @@ function switchSearchingStatus(currentStatus: string) {
 </script>
 
 <template>
-  <ion-page>
+  <ion-modal trigger="search-ion-modal-trigger">
     <ion-content>
       <ion-header>
         <ion-toolbar>
@@ -115,7 +115,7 @@ function switchSearchingStatus(currentStatus: string) {
         <ion-label>未找到相应的结果</ion-label>
       </div>
     </ion-content>
-  </ion-page>
+  </ion-modal>
 </template>
 
 <style scoped>

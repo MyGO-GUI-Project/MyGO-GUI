@@ -46,7 +46,7 @@ async function logInRequest(): Promise<void> {
 </script>
 
 <template>
-  <ion-modal trigger="login-ion-modal-trigger">
+  <ion-modal trigger="signup-ion-modal-trigger">
     <ion-content>
       <ion-header>
         <ion-toolbar>
