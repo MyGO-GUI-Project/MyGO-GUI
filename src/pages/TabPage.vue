@@ -11,7 +11,7 @@ import {
   homeOutline,
   peopleOutline,
   walletOutline,
-  idCardOutline,
+  personOutline,
   logInOutline,
   searchOutline,
 } from 'ionicons/icons'
@@ -45,19 +45,19 @@ import SignupPage from './SignupPage.vue'
           <ion-title slot="start">MyGO</ion-title>
           <ion-buttons class="ion-margin-end" slot="end">
             <ion-button id="search-ion-modal-trigger">
-              <ion-icon slot="start" :icon="searchOutline" />
+              <ion-icon slot="start" :icon="searchOutline" aria-hidden />
               <ion-label>搜索</ion-label>
             </ion-button>
             <search-page />
 
             <ion-button id="login-ion-modal-trigger">
-              <ion-icon slot="start" :icon="logInOutline" />
+              <ion-icon slot="start" :icon="logInOutline" aria-hidden />
               <ion-label>登录</ion-label>
             </ion-button>
             <login-page />
 
             <ion-button id="signup-ion-modal-trigger">
-              <ion-icon slot="start" :icon="idCardOutline" />
+              <ion-icon slot="start" :icon="personOutline" aria-hidden />
               <ion-label>注册</ion-label>
             </ion-button>
             <signup-page />
@@ -70,17 +70,17 @@ import SignupPage from './SignupPage.vue'
       <ion-footer>
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="home" href="/home">
-            <ion-icon :icon="homeOutline" />
+            <ion-icon :icon="homeOutline" aria-hidden />
             <ion-label>主页</ion-label>
           </ion-tab-button>
 
           <ion-tab-button tab="activity" href="/activity">
-            <ion-icon :icon="peopleOutline" />
+            <ion-icon :icon="peopleOutline" aria-hidden />
             <ion-label>活动</ion-label>
           </ion-tab-button>
 
           <ion-tab-button tab="finance" href="/finance">
-            <ion-icon :icon="walletOutline" />
+            <ion-icon :icon="walletOutline" aria-hidden />
             <ion-label>资金</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
