@@ -1,5 +1,16 @@
 <script setup lang="ts">
-import { IonContent, IonPage, IonCard, IonLabel, IonInput, IonHeader, IonToolbar } from '@ionic/vue'
+import {
+  IonButton,
+  IonIcon,
+  IonItem,
+  IonContent,
+  IonPage,
+  IonCard,
+  IonLabel,
+  IonInput,
+  IonHeader,
+  IonToolbar,
+} from '@ionic/vue'
 import { arrowBack, logIn } from 'ionicons/icons'
 import { ref } from 'vue'
 import http from '@/libs/http'
@@ -36,7 +47,7 @@ async function logInRequest(): Promise<void> {
 
 <template>
   <ion-page>
-    <ion-content :fullscreen="true">
+    <ion-content>
       <ion-header>
         <ion-toolbar>
           <ion-button>

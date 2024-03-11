@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import http from '@/libs/http'
 import { useToken } from '@/stores'
-import { home, people, wallet, idCardOutline, logInOutline, search } from 'ionicons/icons'
+import { home, people, wallet, idCardOutline, logInOutline, searchOutline } from 'ionicons/icons'
 
 import {
   IonButtons,
@@ -11,7 +11,7 @@ import {
   IonTabs,
   IonRouterOutlet,
   IonToolbar,
-  IonSearchbar,
+  IonTitle,
   IonButton,
   IonTabBar,
   IonTabButton,
@@ -58,10 +58,12 @@ function redirectToLoginPage() {
     <ion-tabs>
       <ion-header>
         <ion-toolbar>
-          <h2 slot="start">MyGO</h2>
-          <ion-searchbar />
+          <ion-title slot="start">MyGO</ion-title>
           <ion-buttons slot="end">
-            <ion-button fill="solid" @click="redirectToLoginPage()">
+            <ion-button fill="solid" href="/search">
+              <ion-icon slot="start" :icon="searchOutline" />搜索</ion-button
+            >
+            <ion-button fill="solid" href="/login">
               <ion-icon slot="start" :icon="logInOutline" />登录</ion-button
             >
             <ion-button fill="solid" @click="signUp(data)">
@@ -89,11 +91,6 @@ function redirectToLoginPage() {
             <ion-icon :icon="wallet" />
             <ion-label>资金</ion-label>
           </ion-tab-button>
-
-          <ion-tab-button tab="search" href="/search">
-            <ion-icon :icon="search" />
-            <ion-label>搜索</ion-label>
-          </ion-tab-button>
         </ion-tab-bar>
       </ion-footer>
     </ion-tabs>
@@ -103,11 +100,5 @@ function redirectToLoginPage() {
 <style scoped lang="less">
 ion-button {
   margin-right: 10px;
-}
-
-h2 {
-  margin-left: 10px;
-  padding: 0px 10px;
-  font-weight: bold;
 }
 </style>

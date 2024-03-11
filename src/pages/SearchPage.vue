@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { Ref, ref, reactive } from 'vue'
 import {
+  IonToolbar,
+  IonSearchbar,
+  IonButton,
+  IonRow,
+  IonCardTitle,
+  IonIcon,
+  IonCardSubtitle,
+  IonCard,
+  IonHeader,
   IonSelect,
   IonSelectOption,
   IonLabel,
@@ -69,7 +78,7 @@ function switchSearchingStatus(currentStatus: string) {
 
 <template>
   <ion-page>
-    <ion-content :fullscreen="true">
+    <ion-content>
       <ion-header>
         <ion-toolbar>
           <ion-searchbar @input="updateQuery" />
