@@ -17,7 +17,7 @@ import {
 	folderOpenOutline
 } from 'ionicons/icons'
 
-import http from '@/lib/http';
+import { HTTP, get } from '@/libs/http';
 
 interface SearchResultData{
 	id:number;
@@ -41,11 +41,12 @@ function updateQuery(event:InputEvent):void{
 
 async function search():Promise<void>{
 	switchSearchingStatus("Searching");
-	const response = await http.get(`/transaction/search?search=${query.value}`);
-	if(response.status == 200){
-		console.log(response.data.data)
-		if(response.data.data.length > 0){
-			result.value = response.data.data;
+	const response = await get(`/transaction/search?search=${query.value}`);
+	console.log(response);
+	if(response.code == 200){
+		console.log(response.data)
+		if(response.data!=null&&response.data.length > 0){
+			result.value = response.data;
 			switchSearchingStatus("Fetched");
 		}else{
 			switchSearchingStatus("NotFound");
@@ -107,15 +108,14 @@ function switchSearchingStatus(currentStatus: string){
 			<ion-spinner name="circular" class="searchpage-loading" v-if="searchingStatus.Searching"/>
 			<ion-list class="searchpage-result" v-if="searchingStatus.Fetched">
 				<ion-item v-for="item in result" :key="item.id">
-					<ion-card>
+					<ion-card class="searchpage-result-item">
 						<ion-card-title>{{item.title}}</ion-card-title>
 						<ion-card-subtitle>{{item.description}}</ion-card-subtitle>
 					</ion-card>
 				</ion-item>
 			</ion-list>
 			<ion-icon class="searchingpage-network-error" :icon="alert" v-if="searchingStatus.NetworkError"/>
-			<div v-if="searchingStatus.NotFound">
-				<ion-icon :icon="folderOpenOutline"/>
+			<div class="searchpage-notfound" v-if="searchingStatus.NotFound">
 				<ion-label>未找到相应的结果</ion-label>
 			</div>
 		</ion-content>
@@ -133,5 +133,11 @@ function switchSearchingStatus(currentStatus: string){
 .searchingpage-network-error{
 	top:30%;
 	left: 50%;
+}
+.searchpage-notfound{
+	margin: 36%;
+}
+.searchpage-result-item{
+	padding: 2%;
 }
 </style>

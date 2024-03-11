@@ -13,8 +13,8 @@ import {
 	logIn
 } from 'ionicons/icons'
 import {ref} from 'vue'
-import http from '@/lib/http'
-import { useTokenStore } from '@/stores'
+import http from '@/libs/http'
+import { useToken } from '@/stores'
 import { useRouter } from 'vue-router'
 
 const username = ref(0);
@@ -27,7 +27,7 @@ function updatePassword(event:InputEvent){
 	password.value = event.target.value;
 }
 
-const tokenStore = useTokenStore();
+const tokenStore = useToken();
 const router = useRouter();
 function returnToHome():void{
 	router.replace("/home");
@@ -39,7 +39,7 @@ async function logInRequest():Promise<void>{
 		"username": username.value
 	});
 	const response = await http.post("/login",data);
-	const token = (response.headers.authorization as string).slice(7);
+	const token = (response.headers.authorization as string);
 	tokenStore.setToken(token);
 	returnToHome();
 }

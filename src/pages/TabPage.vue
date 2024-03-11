@@ -18,6 +18,7 @@ import {
   IonLabel,
   IonIcon,
 } from '@ionic/vue'
+import router from '@/plugins/router';
 
 /**
  * To-do:
@@ -46,6 +47,11 @@ async function resolve(url: string, data: string): Promise<void> {
   const token = res.headers.authorization as string
   tokenStore.setToken(token)
 }
+
+function redirectToLoginPage(){
+  router.replace("/login");
+}
+
 </script>
 
 <template>
@@ -56,7 +62,7 @@ async function resolve(url: string, data: string): Promise<void> {
           <h2 slot="start">MyGO</h2>
           <ion-searchbar />
           <ion-buttons slot="end">
-            <ion-button fill="solid" @click="logIn(data)">
+            <ion-button fill="solid" @click="redirectToLoginPage()">
               <ion-icon slot="start" :icon="logInOutline" />登录</ion-button
             >
             <ion-button fill="solid" @click="signUp(data)">
