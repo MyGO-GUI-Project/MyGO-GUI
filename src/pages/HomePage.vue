@@ -13,7 +13,7 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonContent,
-  IonPage,
+  IonPage
 } from '@ionic/vue'
 </script>
 

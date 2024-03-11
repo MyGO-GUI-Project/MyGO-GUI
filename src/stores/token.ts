@@ -15,7 +15,7 @@ const useTokenStore = defineStore('token', {
   state: () => ({
     // you shouldn't access rawToken directly, use the token getter
     raw: rawToken as string | null,
-    userInfo: userInfo as UserInfo | null,
+    userInfo: userInfo as UserInfo | null
   }),
   getters: {
     isLogin: (state) => {
@@ -31,7 +31,7 @@ const useTokenStore = defineStore('token', {
     token: (state) => {
       if (state.raw === null) return null
       return TOKEN_PREFIX + state.raw
-    },
+    }
   },
   actions: {
     setToken(token: string) {
@@ -44,8 +44,8 @@ const useTokenStore = defineStore('token', {
       _clearToken()
       this.raw = null
       this.userInfo = null
-    },
-  },
+    }
+  }
 })
 
 export default useTokenStore
@@ -65,7 +65,7 @@ function _parseToken(token: string | null) {
     id: userInfo.Id,
     name: userInfo.Name,
     role: userInfo.Role,
-    expire: userInfo.exp,
+    expire: userInfo.exp
   } as UserInfo
 }
 

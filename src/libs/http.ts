@@ -13,11 +13,11 @@ export const HTTP = {
   UNAUTHORIZED: 401,
   FORBIDDEN: 403,
   NOT_FOUND: 404,
-  INTERNAL_SERVER_ERROR: 500,
+  INTERNAL_SERVER_ERROR: 500
 } as const
 
 const http = axios.create({
-  baseURL: 'http://47.113.194.28:8888/api',
+  baseURL: 'http://47.113.194.28:8888/api'
 })
 
 http.interceptors.request.use((config) => {

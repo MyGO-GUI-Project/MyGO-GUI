@@ -1,17 +1,6 @@
 <script setup lang="ts">
-import {
-  IonButton,
-  IonIcon,
-  IonItem,
-  IonContent,
-  IonModal,
-  IonCard,
-  IonLabel,
-  IonInput,
-  IonHeader,
-  IonToolbar,
-} from '@ionic/vue'
-import { arrowBack, logIn } from 'ionicons/icons'
+import { IonButton, IonIcon, IonItem, IonModal, IonCard, IonLabel, IonInput } from '@ionic/vue'
+import { logIn } from 'ionicons/icons'
 import { ref } from 'vue'
 import http from '@/libs/http'
 import { useToken } from '@/stores'
@@ -36,7 +25,7 @@ function returnToHome(): void {
 async function logInRequest(): Promise<void> {
   const data = JSON.stringify({
     password: password.value,
-    username: username.value,
+    username: username.value
   })
   const response = await http.post('/login', data)
   const token = response.headers.authorization as string
@@ -47,38 +36,36 @@ async function logInRequest(): Promise<void> {
 
 <template>
   <ion-modal trigger="login-ion-modal-trigger">
-    <ion-content>
-      <ion-header>
-        <ion-toolbar>
-          <ion-button>
-            <ion-icon :icon="arrowBack" />
-          </ion-button>
-        </ion-toolbar>
-      </ion-header>
-      <ion-card class="loginpage-login-panel">
-        <ion-item class="loginpage-login-panel-label">
-          <ion-label>账号名</ion-label>
-        </ion-item>
-        <ion-item class="loginpage-login-panel-input">
-          <ion-input @input="updateUsername" />
-        </ion-item>
-        <ion-item class="loginpage-login-panel-label">
-          <ion-label>密码</ion-label>
-        </ion-item>
-        <ion-item class="loginpage-login-panel-input">
-          <ion-input @input="updatePassword" type="password" />
-        </ion-item>
+    <ion-card class="loginpage-login-panel">
+      <ion-item class="loginpage-login-panel-label">
+        <ion-label>账号名</ion-label>
+      </ion-item>
+      <ion-item class="loginpage-login-panel-input">
+        <ion-input @input="updateUsername" />
+      </ion-item>
+      <ion-item class="loginpage-login-panel-label">
+        <ion-label>密码</ion-label>
+      </ion-item>
+      <ion-item class="loginpage-login-panel-input">
+        <ion-input @input="updatePassword" type="password" />
+      </ion-item>
 
-        <ion-button @click="logInRequest" id="loginpage-login-panel-button">
-          <ion-icon :icon="logIn" />
-          <ion-label>登录</ion-label>
-        </ion-button>
-      </ion-card>
-    </ion-content>
+      <ion-button @click="logInRequest" id="loginpage-login-panel-button">
+        <ion-icon :icon="logIn" />
+        <ion-label>登录</ion-label>
+      </ion-button>
+    </ion-card>
   </ion-modal>
 </template>
 
-<style scoped>
+<style scoped lang="less">
+ion-modal {
+  --width: fit-content;
+  --height: fit-content;
+  --border-radius: 6px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+}
+
 .loginpage-login-panel {
   left: 20%;
   width: 60%;

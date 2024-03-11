@@ -11,7 +11,7 @@ import {
   IonItem,
   IonLabel,
   IonContent,
-  IonPage,
+  IonPage
 } from '@ionic/vue'
 </script>
 

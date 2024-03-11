@@ -13,7 +13,7 @@ import {
   walletOutline,
   personOutline,
   logInOutline,
-  searchOutline,
+  searchOutline
 } from 'ionicons/icons'
 
 import {
@@ -29,12 +29,12 @@ import {
   IonTabBar,
   IonTabButton,
   IonLabel,
-  IonIcon,
+  IonIcon
 } from '@ionic/vue'
 
-import SearchPage from './SearchPage.vue'
-import LoginPage from './LoginPage.vue'
-import SignupPage from './SignupPage.vue'
+import SearchPage from '@/modals/SearchModal.vue'
+import LoginPage from '@/modals/LoginModal.vue'
+import SignupPage from '@/modals/SignupModal.vue'
 </script>
 
 <template>
@@ -43,21 +43,22 @@ import SignupPage from './SignupPage.vue'
       <ion-header>
         <ion-toolbar>
           <ion-title slot="start">MyGO</ion-title>
+
           <ion-buttons class="ion-margin-end" slot="end">
             <ion-button id="search-ion-modal-trigger">
-              <ion-icon slot="start" :icon="searchOutline" aria-hidden />
+              <ion-icon aria-hidden slot="start" :icon="searchOutline" />
               <ion-label>搜索</ion-label>
             </ion-button>
             <search-page />
 
             <ion-button id="login-ion-modal-trigger">
-              <ion-icon slot="start" :icon="logInOutline" aria-hidden />
+              <ion-icon aria-hidden slot="start" :icon="logInOutline" />
               <ion-label>登录</ion-label>
             </ion-button>
             <login-page />
 
             <ion-button id="signup-ion-modal-trigger">
-              <ion-icon slot="start" :icon="personOutline" aria-hidden />
+              <ion-icon aria-hidden slot="start" :icon="personOutline" />
               <ion-label>注册</ion-label>
             </ion-button>
             <signup-page />
@@ -70,17 +71,17 @@ import SignupPage from './SignupPage.vue'
       <ion-footer>
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="home" href="/home">
-            <ion-icon :icon="homeOutline" aria-hidden />
+            <ion-icon aria-hidden :icon="homeOutline" />
             <ion-label>主页</ion-label>
           </ion-tab-button>
 
           <ion-tab-button tab="activity" href="/activity">
-            <ion-icon :icon="peopleOutline" aria-hidden />
+            <ion-icon aria-hidden :icon="peopleOutline" />
             <ion-label>活动</ion-label>
           </ion-tab-button>
 
           <ion-tab-button tab="finance" href="/finance">
-            <ion-icon :icon="walletOutline" aria-hidden />
+            <ion-icon aria-hidden :icon="walletOutline" />
             <ion-label>资金</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
