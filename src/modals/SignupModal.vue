@@ -88,7 +88,7 @@ async function logInRequest(): Promise<void> {
 ion-modal {
   --width: fit-content;
   --height: fit-content;
-  --border-radius: 6px;
+  --border-radius: 4px;
   --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
 }
 
