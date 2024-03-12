@@ -15,4 +15,4 @@ include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../node_modules/.pnpm/@capacitor+status-bar@6.0.0-rc.0_@capacitor+core@6.0.0-rc.0/node_modules/@capacitor/status-bar/android')
 
 include ':nativescript-capacitor'
-project(':nativescript-capacitor').projectDir = new File('../node_modules/.pnpm/@nativescript+capacitor@5.0.2_@types+node@20.11.19_esbuild@0.19.12_typescript@5.3.3_webpack@5.90.2/node_modules/@nativescript/capacitor/android')
+project(':nativescript-capacitor').projectDir = new File('../node_modules/.pnpm/@nativescript+capacitor@5.0.2_@types+node@20.11.26_typescript@5.4.2_webpack@5.90.3/node_modules/@nativescript/capacitor/android')
