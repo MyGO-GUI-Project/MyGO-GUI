@@ -10,7 +10,6 @@ import {
   IonCardHeader,
   IonButton,
   IonIcon,
-  IonItem,
   IonModal,
   IonCard,
   IonLabel,
@@ -57,18 +56,15 @@ async function logInRequest(): Promise<void> {
       </ion-card-header>
 
       <ion-card-content>
-        <ion-item class="loginpage-login-panel-label">
-          <ion-label>账号名</ion-label>
-        </ion-item>
-        <ion-item class="loginpage-login-panel-input">
-          <ion-input @input="updateUsername" />
-        </ion-item>
-        <ion-item class="loginpage-login-panel-label">
-          <ion-label>密码</ion-label>
-        </ion-item>
-        <ion-item class="loginpage-login-panel-input">
-          <ion-input @input="updatePassword" type="password" />
-        </ion-item>
+        <ion-input fill="outline" label="账号" label-placement="stacked" clearInput @input="updateUsername" />
+        <ion-input
+          type="password"
+          fill="outline"
+          label="密码"
+          label-placement="stacked"
+          clearInput
+          @input="updatePassword"
+        />
 
         <ion-button @click="logInRequest" id="loginpage-login-panel-button">
           <ion-icon :icon="personOutline" />
