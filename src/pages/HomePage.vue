@@ -24,7 +24,10 @@ import {
               <ion-item slot="header">
                 <ion-label>余额 (T)</ion-label>
               </ion-item>
-              <ion-label class="ion-margin" slot="content">62.93</ion-label>
+
+              <ion-item slot="content" lines="none">
+                <ion-label>62.93</ion-label>
+              </ion-item>
             </ion-accordion>
           </ion-accordion-group>
         </ion-card-content>

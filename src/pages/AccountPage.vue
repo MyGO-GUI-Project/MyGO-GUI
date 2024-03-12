@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {
+  IonImg,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -22,7 +23,7 @@ import {
         <ion-card-content>
           <ion-item>
             <ion-avatar slot="start">
-              <img alt="用户头像" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+              <ion-img alt="用户头像" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
             </ion-avatar>
             <ion-label>MyGO Project</ion-label>
           </ion-item>
@@ -32,7 +33,10 @@ import {
               <ion-item slot="header">
                 <ion-label>余额 (T)</ion-label>
               </ion-item>
-              <ion-label class="ion-margin" slot="content">62.93</ion-label>
+
+              <ion-item slot="content" lines="none">
+                <ion-label>62.93</ion-label>
+              </ion-item>
             </ion-accordion>
           </ion-accordion-group>
         </ion-card-content>
