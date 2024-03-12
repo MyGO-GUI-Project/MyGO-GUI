@@ -2,7 +2,18 @@
 import { onMounted, reactive, ref } from 'vue'
 import { add } from 'ionicons/icons'
 
-import { IonFab, IonFabButton, IonPage, IonContent, IonList, IonItem, IonLabel } from '@ionic/vue'
+import {
+  IonAvatar,
+  IonImg,
+  IonIcon,
+  IonFab,
+  IonFabButton,
+  IonPage,
+  IonContent,
+  IonList,
+  IonItem,
+  IonLabel
+} from '@ionic/vue'
 
 import { HTTP, get } from '@/libs/http'
 import { Transaction } from '@/libs/types'
@@ -42,7 +53,8 @@ const fetchTransactions = async () => {
 }
 
 onMounted(async () => {
-  items = (await fetchTransactions()) ?? []
+  items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+  // items = (await fetchTransactions()) ?? []
 })
 </script>
 
@@ -56,11 +68,10 @@ onMounted(async () => {
       </ion-fab>
       <ion-list>
         <ion-item v-for="(item, index) in items" :key="index">
-          <!-- <ion-avatar slot="start">
+          <ion-avatar slot="start">
             <ion-img :src="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
-          </ion-avatar> -->
-          <ion-label>{{ item.title }}</ion-label>
-          <ion-label>{{ item.createdAt }}</ion-label>
+          </ion-avatar>
+          <ion-label>需求 {{ item }}</ion-label>
         </ion-item>
       </ion-list>
     </ion-content>
