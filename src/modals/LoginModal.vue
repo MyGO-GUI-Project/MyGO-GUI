@@ -1,5 +1,17 @@
 <script setup lang="ts">
-import { IonButton, IonIcon, IonItem, IonModal, IonCard, IonLabel, IonInput } from '@ionic/vue'
+import {
+  IonCardTitle,
+  IonCardSubtitle,
+  IonCardContent,
+  IonCardHeader,
+  IonButton,
+  IonIcon,
+  IonItem,
+  IonModal,
+  IonCard,
+  IonLabel,
+  IonInput
+} from '@ionic/vue'
 import { logIn } from 'ionicons/icons'
 import { ref } from 'vue'
 import http from '@/libs/http'
@@ -36,24 +48,31 @@ async function logInRequest(): Promise<void> {
 
 <template>
   <ion-modal trigger="login-ion-modal-trigger" keep-contents-mounted>
-    <ion-card class="loginpage-login-panel">
-      <ion-item class="loginpage-login-panel-label">
-        <ion-label>账号名</ion-label>
-      </ion-item>
-      <ion-item class="loginpage-login-panel-input">
-        <ion-input @input="updateUsername" />
-      </ion-item>
-      <ion-item class="loginpage-login-panel-label">
-        <ion-label>密码</ion-label>
-      </ion-item>
-      <ion-item class="loginpage-login-panel-input">
-        <ion-input @input="updatePassword" type="password" />
-      </ion-item>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>登录</ion-card-title>
+        <ion-card-subtitle>欢迎回家</ion-card-subtitle>
+      </ion-card-header>
 
-      <ion-button @click="logInRequest" id="loginpage-login-panel-button">
-        <ion-icon :icon="logIn" />
-        <ion-label>登录</ion-label>
-      </ion-button>
+      <ion-card-content>
+        <ion-item class="loginpage-login-panel-label">
+          <ion-label>账号名</ion-label>
+        </ion-item>
+        <ion-item class="loginpage-login-panel-input">
+          <ion-input @input="updateUsername" />
+        </ion-item>
+        <ion-item class="loginpage-login-panel-label">
+          <ion-label>密码</ion-label>
+        </ion-item>
+        <ion-item class="loginpage-login-panel-input">
+          <ion-input @input="updatePassword" type="password" />
+        </ion-item>
+
+        <ion-button @click="logInRequest" id="loginpage-login-panel-button">
+          <ion-icon :icon="logIn" />
+          <ion-label>登录</ion-label>
+        </ion-button>
+      </ion-card-content>
     </ion-card>
   </ion-modal>
 </template>
