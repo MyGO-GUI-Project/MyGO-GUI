@@ -72,17 +72,17 @@ import SignupModal from '@/modals/SignupModal.vue'
         <ion-tab-bar slot="bottom">
           <ion-tab-button tab="home" href="/home">
             <ion-icon aria-hidden :icon="homeOutline" />
-            <ion-label>主页</ion-label>
+            <ion-label>推荐</ion-label>
           </ion-tab-button>
 
-          <ion-tab-button tab="activity" href="/activity">
+          <ion-tab-button tab="service" href="/service">
             <ion-icon aria-hidden :icon="peopleOutline" />
-            <ion-label>活动</ion-label>
+            <ion-label>服务</ion-label>
           </ion-tab-button>
 
-          <ion-tab-button tab="finance" href="/finance">
+          <ion-tab-button tab="account" href="/account">
             <ion-icon aria-hidden :icon="walletOutline" />
-            <ion-label>资金</ion-label>
+            <ion-label>我的</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
       </ion-footer>

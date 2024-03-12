@@ -18,12 +18,12 @@ export default createRouter({
           component: () => import('@/pages/HomePage.vue')
         },
         {
-          path: 'activity',
-          component: () => import('@/pages/ActivityPage.vue')
+          path: 'service',
+          component: () => import('@/pages/ServicePage.vue')
         },
         {
-          path: 'finance',
-          component: () => import('@/pages/FinancePage.vue')
+          path: 'account',
+          component: () => import('@/pages/AccountPage.vue')
         }
       ]
     }
