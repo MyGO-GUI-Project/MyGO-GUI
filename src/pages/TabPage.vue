@@ -10,8 +10,8 @@
 import {
   homeOutline,
   peopleOutline,
-  walletOutline,
   personOutline,
+  personAddOutline,
   logInOutline,
   searchOutline
 } from 'ionicons/icons'
@@ -58,7 +58,7 @@ import SignupModal from '@/modals/SignupModal.vue'
             <LoginModal />
 
             <ion-button id="signup-ion-modal-trigger">
-              <ion-icon aria-hidden slot="start" :icon="personOutline" />
+              <ion-icon aria-hidden slot="start" :icon="personAddOutline" />
               <ion-label>注册</ion-label>
             </ion-button>
             <SignupModal />
@@ -81,7 +81,7 @@ import SignupModal from '@/modals/SignupModal.vue'
           </ion-tab-button>
 
           <ion-tab-button tab="account" href="/account">
-            <ion-icon aria-hidden :icon="walletOutline" />
+            <ion-icon aria-hidden :icon="personOutline" />
             <ion-label>我的</ion-label>
           </ion-tab-button>
         </ion-tab-bar>
