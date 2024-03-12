@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { logInOutline } from 'ionicons/icons'
+
 import {
   IonCardTitle,
   IonCardSubtitle,
@@ -12,11 +16,9 @@ import {
   IonLabel,
   IonInput
 } from '@ionic/vue'
-import { logIn } from 'ionicons/icons'
-import { ref } from 'vue'
-import http from '@/libs/http'
+
 import { useToken } from '@/stores'
-import { useRouter } from 'vue-router'
+import http from '@/libs/http'
 
 const username = ref(0)
 const password = ref(0)
@@ -69,7 +71,7 @@ async function logInRequest(): Promise<void> {
         </ion-item>
 
         <ion-button @click="logInRequest" id="loginpage-login-panel-button">
-          <ion-icon :icon="logIn" />
+          <ion-icon :icon="logInOutline" />
           <ion-label>登录</ion-label>
         </ion-button>
       </ion-card-content>
@@ -85,21 +87,6 @@ ion-modal {
   --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
 }
 
-.loginpage-login-panel {
-  left: 20%;
-  width: 60%;
-  top: 20%;
-  padding: 5%;
-}
-.loginpage-login-panel-input {
-  border-bottom: 2px;
-  border-bottom-style: solid;
-  border-color: lightgray;
-  transition: 200ms;
-}
-.loginpage-login-panel-input:hover {
-  border-color: gold;
-}
 #loginpage-login-panel-button {
   margin-top: 10%;
   display: flex;

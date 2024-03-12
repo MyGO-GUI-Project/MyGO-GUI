@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Ref, ref, reactive } from 'vue'
+import { alertOutline } from 'ionicons/icons'
+
 import {
   IonCardContent,
   IonToolbar,
@@ -21,9 +23,8 @@ import {
   IonList,
   IonItem
 } from '@ionic/vue'
-import { alert } from 'ionicons/icons'
 
-import { HTTP, get } from '@/libs/http'
+import { get } from '@/libs/http'
 
 interface SearchResultData {
   id: number
@@ -112,7 +113,11 @@ function switchSearchingStatus(currentStatus: string) {
             </ion-card>
           </ion-item>
         </ion-list>
-        <ion-icon class="searchingpage-network-error" :icon="alert" v-if="searchingStatus.NetworkError" />
+        <ion-icon
+          class="searchingpage-network-error"
+          :icon="alertOutline"
+          v-if="searchingStatus.NetworkError"
+        />
         <div class="searchpage-notfound" v-if="searchingStatus.NotFound">
           <ion-label>未找到相应的结果</ion-label>
         </div>
