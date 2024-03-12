@@ -19,12 +19,12 @@ import {
     <ion-content>
       <ion-card>
         <ion-card-content>
-          <ion-accordion-group>
-            <ion-accordion value="TimeCoin">
-              <ion-item slot="header" color="light">
+          <ion-accordion-group expand="inset">
+            <ion-accordion>
+              <ion-item slot="header">
                 <ion-label>余额 (T)</ion-label>
               </ion-item>
-              <div class="ion-margin" slot="content">62.93</div>
+              <ion-label class="ion-margin" slot="content">62.93</ion-label>
             </ion-accordion>
           </ion-accordion-group>
         </ion-card-content>

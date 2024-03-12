@@ -56,8 +56,17 @@ async function logInRequest(): Promise<void> {
       </ion-card-header>
 
       <ion-card-content>
-        <ion-input fill="outline" label="账号" label-placement="stacked" clearInput @input="updateUsername" />
         <ion-input
+          class="ion-margin-bottom"
+          fill="outline"
+          label="账号"
+          label-placement="stacked"
+          clearInput
+          @input="updateUsername"
+        />
+
+        <ion-input
+          class="ion-margin-bottom"
           type="password"
           fill="outline"
           label="密码"
@@ -84,8 +93,7 @@ ion-modal {
 }
 
 #loginpage-login-panel-button {
-  margin-top: 10%;
-  display: flex;
+  display: block;
   justify-content: center;
 }
 </style>

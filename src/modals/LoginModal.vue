@@ -57,6 +57,7 @@ async function logInRequest(): Promise<void> {
 
       <ion-card-content>
         <ion-input
+          class="ion-margin-bottom"
           autocomplete="username"
           fill="outline"
           label="账号"
@@ -64,7 +65,9 @@ async function logInRequest(): Promise<void> {
           clearInput
           @input="updateUsername"
         />
+
         <ion-input
+          class="ion-margin-bottom"
           type="password"
           autocomplete="current-password"
           fill="outline"
@@ -92,8 +95,7 @@ ion-modal {
 }
 
 #loginpage-login-panel-button {
-  margin-top: 10%;
-  display: flex;
+  display: block;
   justify-content: center;
 }
 </style>
