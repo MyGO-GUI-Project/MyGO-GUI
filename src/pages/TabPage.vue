@@ -49,19 +49,16 @@ import SignupModal from '@/modals/SignupModal.vue'
               <ion-icon aria-hidden slot="start" :icon="searchOutline" />
               <ion-label>搜索</ion-label>
             </ion-button>
-            <SearchModal />
 
             <ion-button id="login-ion-modal-trigger">
               <ion-icon aria-hidden slot="start" :icon="logInOutline" />
               <ion-label>登录</ion-label>
             </ion-button>
-            <LoginModal />
 
             <ion-button id="signup-ion-modal-trigger">
               <ion-icon aria-hidden slot="start" :icon="personAddOutline" />
               <ion-label>注册</ion-label>
             </ion-button>
-            <SignupModal />
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -88,4 +85,8 @@ import SignupModal from '@/modals/SignupModal.vue'
       </ion-footer>
     </ion-tabs>
   </ion-page>
+
+  <search-modal />
+  <login-modal />
+  <signup-modal />
 </template>

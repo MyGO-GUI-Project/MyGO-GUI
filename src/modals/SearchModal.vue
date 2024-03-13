@@ -1,23 +1,17 @@
 <script setup lang="ts">
 import { Ref, ref, reactive } from 'vue'
-import { alertOutline } from 'ionicons/icons'
+import { alertOutline, searchOutline } from 'ionicons/icons'
 
 import {
   IonCardContent,
-  IonToolbar,
   IonSearchbar,
   IonButton,
-  IonRow,
   IonCardTitle,
   IonIcon,
   IonCardSubtitle,
   IonCard,
   IonCardHeader,
-  IonSelect,
-  IonSelectOption,
   IonLabel,
-  IonGrid,
-  IonCol,
   IonModal,
   IonSpinner,
   IonList,
@@ -81,30 +75,19 @@ function switchSearchingStatus(currentStatus: string) {
   <ion-modal trigger="search-ion-modal-trigger">
     <ion-card>
       <ion-card-header>
-        <ion-toolbar>
-          <ion-searchbar @input="updateQuery" />
-          <ion-button @click="search()" slot="end"> 搜索 </ion-button>
-        </ion-toolbar>
-        <ion-toolbar>
-          <ion-grid :fixed="true">
-            <ion-row>
-              <ion-col class="searchpage-filter-label" size="1">
-                <ion-label>过滤</ion-label>
-              </ion-col>
-              <ion-col>
-                <ion-select placeholder="按状态">
-                  <ion-select-option> 待审核 </ion-select-option>
-                  <ion-select-option> 已通过 </ion-select-option>
-                  <ion-select-option> 已驳回 </ion-select-option>
-                </ion-select>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-toolbar>
+        <ion-card-title>搜索</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
-        <ion-spinner name="circular" class="searchpage-loading" v-if="searchingStatus.Searching" />
+        <ion-searchbar @input="updateQuery" />
+
+        <ion-button id="loginpage-login-panel-button" fill="clear" @click="search">
+          <ion-icon :icon="searchOutline" />
+          <ion-label>搜索</ion-label>
+        </ion-button>
+
+        <ion-spinner v-if="searchingStatus.Searching" />
+
         <ion-list class="searchpage-result" v-if="searchingStatus.Fetched">
           <ion-item v-for="item in result" :key="item.id">
             <ion-card class="searchpage-result-item">
@@ -134,12 +117,13 @@ ion-modal {
   --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
 }
 
+#loginpage-login-panel-button {
+  display: block;
+  justify-content: center;
+}
+
 .searchpage-filter-label {
   align-self: center;
-}
-.searchpage-loading {
-  top: 30%;
-  left: 50%;
 }
 .searchingpage-network-error {
   top: 30%;
