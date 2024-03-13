@@ -35,7 +35,12 @@ const query: Ref<string> = ref('')
 
 const result: Ref<SearchResultData[]> = ref([])
 
-function updateQuery(event: InputEvent): void {
+const searchIonSearchbar = ref()
+function searchIonModalDidPresent() {
+  searchIonSearchbar.value.$el.setFocus()
+}
+
+function updateQuery(event: any): void {
   const content = event.target.value
   query.value = content
 }
@@ -72,14 +77,14 @@ function switchSearchingStatus(currentStatus: string) {
 </script>
 
 <template>
-  <ion-modal trigger="search-ion-modal-trigger">
+  <ion-modal trigger="search-ion-modal-trigger" @didPresent="searchIonModalDidPresent">
     <ion-card>
       <ion-card-header>
         <ion-card-title>搜索</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
-        <ion-searchbar @input="updateQuery" />
+        <ion-searchbar ref="searchIonSearchbar" :debounce="1000" inputmode="search" enterkeyhint="search" placeholder="搜索需求" @ionInput="updateQuery" />
 
         <ion-button id="loginpage-login-panel-button" fill="clear" @click="search">
           <ion-icon :icon="searchOutline" />

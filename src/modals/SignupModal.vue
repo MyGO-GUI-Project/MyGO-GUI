@@ -22,6 +22,11 @@ import http from '@/libs/http'
 const username = ref(0)
 const password = ref(0)
 
+const usernameIonInput = ref()
+function signupIonModalDidPresent() {
+  usernameIonInput.value.$el.setFocus()
+}
+
 function updateUsername(event: InputEvent) {
   username.value = event.target.value
 }
@@ -48,7 +53,7 @@ async function logInRequest(): Promise<void> {
 </script>
 
 <template>
-  <ion-modal trigger="signup-ion-modal-trigger" keep-contents-mounted>
+  <ion-modal trigger="signup-ion-modal-trigger" keep-contents-mounted @didPresent="signupIonModalDidPresent">
     <ion-card>
       <ion-card-header>
         <ion-card-title>注册</ion-card-title>
@@ -57,6 +62,7 @@ async function logInRequest(): Promise<void> {
 
       <ion-card-content>
         <ion-input
+          ref="usernameIonInput"
           class="ion-margin-bottom"
           fill="outline"
           label="账号"
