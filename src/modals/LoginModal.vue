@@ -77,7 +77,7 @@ async function logInRequest(): Promise<void> {
           @input="updatePassword"
         />
 
-        <ion-button @click="logInRequest" id="loginpage-login-panel-button">
+        <ion-button id="loginpage-login-panel-button" fill="clear" @click="logInRequest">
           <ion-icon :icon="logInOutline" />
           <ion-label>登录</ion-label>
         </ion-button>
