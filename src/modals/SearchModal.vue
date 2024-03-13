@@ -84,7 +84,14 @@ function switchSearchingStatus(currentStatus: string) {
       </ion-card-header>
 
       <ion-card-content>
-        <ion-searchbar ref="searchIonSearchbar" :debounce="1000" inputmode="search" enterkeyhint="search" placeholder="搜索需求" @ionInput="updateQuery" />
+        <ion-searchbar
+          ref="searchIonSearchbar"
+          :debounce="1000"
+          inputmode="search"
+          enterkeyhint="search"
+          placeholder="搜索需求"
+          @ionInput="updateQuery"
+        />
 
         <ion-button id="loginpage-login-panel-button" fill="clear" @click="search">
           <ion-icon :icon="searchOutline" />
