@@ -67,7 +67,7 @@ onMounted(async () => {
           <ion-list>
             <ion-item v-for="(requirement, index) in requirements" :key="index">
               <ion-avatar slot="start">
-                <ion-img alt="avatar" :src="`https://picsum.photos/80/80?random=${index}`" />
+                <ion-img alt="头像" :src="`https://picsum.photos/80/80?random=${index}`" />
               </ion-avatar>
               <ion-label>
                 <h2>需求 {{ index }}</h2>
@@ -75,14 +75,14 @@ onMounted(async () => {
               </ion-label>
             </ion-item>
           </ion-list>
-
-          <ion-fab slot="fixed" horizontal="end" vertical="bottom">
-            <ion-fab-button aria-label="add" color="light">
-              <ion-icon aria-hidden :icon="addOutline"></ion-icon>
-            </ion-fab-button>
-          </ion-fab>
         </ion-card-content>
       </ion-card>
+
+      <ion-fab class="ion-margin-end ion-margin-bottom" slot="fixed" horizontal="end" vertical="bottom">
+        <ion-fab-button aria-label="add" color="light">
+          <ion-icon aria-hidden :icon="addOutline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
     </ion-content>
   </ion-page>
 </template>

@@ -8,7 +8,8 @@ import {
   IonButton,
   IonCardTitle,
   IonIcon,
-  IonCardSubtitle,
+  IonImg,
+  IonAvatar,
   IonCard,
   IonCardHeader,
   IonLabel,
@@ -33,7 +34,68 @@ interface SearchResultData {
 
 const searchContent: Ref<string> = ref('')
 
-const result: Ref<SearchResultData[]> = ref([])
+const searchResults: Ref<SearchResultData[]> = ref([
+  {
+    id: 1,
+    user_id: 1,
+    title: '1',
+    description: '1',
+    value: 1,
+    status: '1',
+    created_at: 1,
+    updated_at: 1
+  } as SearchResultData,
+  {
+    id: 2,
+    user_id: 1,
+    title: '1',
+    description: '1',
+    value: 1,
+    status: '1',
+    created_at: 1,
+    updated_at: 1
+  } as SearchResultData,
+  {
+    id: 3,
+    user_id: 1,
+    title: '1',
+    description: '1',
+    value: 1,
+    status: '1',
+    created_at: 1,
+    updated_at: 1
+  } as SearchResultData,
+  {
+    id: 4,
+    user_id: 1,
+    title: '1',
+    description: '1',
+    value: 1,
+    status: '1',
+    created_at: 1,
+    updated_at: 1
+  } as SearchResultData,
+  {
+    id: 5,
+    user_id: 1,
+    title: '1',
+    description: '1',
+    value: 1,
+    status: '1',
+    created_at: 1,
+    updated_at: 1
+  } as SearchResultData,
+  {
+    id: 6,
+    user_id: 1,
+    title: '1',
+    description: '1',
+    value: 1,
+    status: '1',
+    created_at: 1,
+    updated_at: 1
+  } as SearchResultData
+])
 
 const searchIonSearchbar = ref()
 function searchIonModalDidPresent() {
@@ -109,12 +171,15 @@ function switchSearchingStatus(currentStatus: string) {
 
         <ion-spinner name="dots" v-if="searchingStatus.Searching" />
 
-        <ion-list class="searchpage-result" v-if="searchingStatus.Fetched">
-          <ion-item v-for="item in result" :key="item.id">
-            <ion-card class="searchpage-result-item">
-              <ion-card-title>{{ item.title }}</ion-card-title>
-              <ion-card-subtitle>{{ item.description }}</ion-card-subtitle>
-            </ion-card>
+        <ion-list>
+          <ion-item v-for="searchResult in searchResults" :key="searchResult.id">
+            <ion-avatar slot="start">
+              <ion-img alt="头像" :src="`https://picsum.photos/80/80?random=${searchResult.id}`" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ searchResult.title }}</h2>
+              <p>{{ searchResult.description }}</p>
+            </ion-label>
           </ion-item>
         </ion-list>
         <ion-icon
