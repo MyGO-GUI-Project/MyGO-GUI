@@ -3,6 +3,8 @@ import { onMounted, reactive, ref } from 'vue'
 import { addOutline } from 'ionicons/icons'
 
 import {
+  IonCard,
+  IonCardContent,
   IonAvatar,
   IonImg,
   IonIcon,
@@ -39,9 +41,8 @@ const isLoading = ref(true)
  * each time we fetch, we increase the index by 1
  * and each batch of transactions is 50
  */
-const index = ref(0)
 
-let items = reactive<Transaction[]>([])
+let requirements = reactive<Transaction[]>([])
 
 const fetchTransactions = async () => {
   const res = await get(`/transaction/limit?index=${index.value}`)
@@ -53,7 +54,7 @@ const fetchTransactions = async () => {
 }
 
 onMounted(async () => {
-  items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+  requirements = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
   // items = (await fetchTransactions()) ?? []
 })
 </script>
@@ -61,20 +62,27 @@ onMounted(async () => {
 <template>
   <ion-page>
     <ion-content>
-      <ion-list>
-        <ion-item v-for="(item, index) in items" :key="index">
-          <ion-avatar slot="start">
-            <ion-img :src="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
-          </ion-avatar>
-          <ion-label>需求 {{ item }}</ion-label>
-        </ion-item>
-      </ion-list>
+      <ion-card>
+        <ion-card-content>
+          <ion-list>
+            <ion-item v-for="(requirement, index) in requirements" :key="index">
+              <ion-avatar slot="start">
+                <ion-img alt="avatar" :src="`https://picsum.photos/80/80?random=${index}`" />
+              </ion-avatar>
+              <ion-label>
+                <h2>需求 {{ index }}</h2>
+                <p>{{ requirement }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
 
-      <ion-fab slot="fixed" horizontal="end" vertical="bottom">
-        <ion-fab-button aria-label="add" color="light">
-          <ion-icon aria-hidden :icon="addOutline"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+          <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+            <ion-fab-button aria-label="add" color="light">
+              <ion-icon aria-hidden :icon="addOutline"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
