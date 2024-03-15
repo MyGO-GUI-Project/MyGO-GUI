@@ -67,7 +67,11 @@ async function signupIonButtonClick(): Promise<void> {
           clearInput
         />
 
-        <ion-button class="signup-ion-button ion-justify-content-center" fill="clear" @click="signupIonButtonClick">
+        <ion-button
+          class="signup-ion-button ion-justify-content-center"
+          fill="clear"
+          @click="signupIonButtonClick"
+        >
           <ion-icon :icon="personOutline" />
           <ion-label>注册</ion-label>
         </ion-button>

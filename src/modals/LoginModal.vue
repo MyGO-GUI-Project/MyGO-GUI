@@ -69,7 +69,11 @@ async function loginIonButtonClick(): Promise<void> {
           clearInput
         />
 
-        <ion-button class="login-ion-button ion-justify-content-center" fill="clear" @click="loginIonButtonClick">
+        <ion-button
+          class="login-ion-button ion-justify-content-center"
+          fill="clear"
+          @click="loginIonButtonClick"
+        >
           <ion-icon :icon="logInOutline" />
           <ion-label>登录</ion-label>
         </ion-button>

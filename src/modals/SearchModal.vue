@@ -98,7 +98,11 @@ function switchSearchingStatus(currentStatus: string) {
           @ion-input="searchIonSearchbarIonInput"
         />
 
-        <ion-button class="search-ion-button ion-justify-content-center" fill="clear" @click="searchIonButtonClick">
+        <ion-button
+          class="search-ion-button ion-justify-content-center"
+          fill="clear"
+          @click="searchIonButtonClick"
+        >
           <ion-icon :icon="searchOutline" />
           <ion-label>搜索</ion-label>
         </ion-button>
