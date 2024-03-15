@@ -127,7 +127,7 @@ async function search(): Promise<void> {
   }
 }
 
-const searchingStatus: { [key: string]: boolean } = reactive({
+const searchStatus: { [key: string]: boolean } = reactive({
   Fetched: false,
   NotFound: false,
   Searching: false,
@@ -135,8 +135,8 @@ const searchingStatus: { [key: string]: boolean } = reactive({
 })
 
 function switchSearchingStatus(currentStatus: string) {
-  for (const status in searchingStatus) {
-    searchingStatus[status] = status == currentStatus
+  for (const status in searchStatus) {
+    searchStatus[status] = status == currentStatus
   }
 }
 </script>
@@ -169,7 +169,7 @@ function switchSearchingStatus(currentStatus: string) {
           <ion-label>搜索</ion-label>
         </ion-button>
 
-        <ion-spinner name="dots" v-if="searchingStatus.Searching" />
+        <ion-spinner name="dots" v-if="searchStatus.Searching" />
 
         <ion-list>
           <ion-item v-for="searchResult in searchResults" :key="searchResult.id">

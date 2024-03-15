@@ -1,3 +1,14 @@
+@import url('@ionic/vue/css/core.css');
+@import url('@ionic/vue/css/normalize.css');
+@import url('@ionic/vue/css/structure.css');
+@import url('@ionic/vue/css/typography.css');
+@import url('@ionic/vue/css/padding.css');
+@import url('@ionic/vue/css/float-elements.css');
+@import url('@ionic/vue/css/text-alignment.css');
+@import url('@ionic/vue/css/text-transformation.css');
+@import url('@ionic/vue/css/flex-utils.css');
+@import url('@ionic/vue/css/display.css');
+@import url('variables.css');
 *:not(ion-input *) {
   border-radius: 4px !important;
 }
