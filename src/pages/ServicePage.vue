@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
-import { add } from 'ionicons/icons'
+import { addOutline } from 'ionicons/icons'
 
 import {
   IonAvatar,
@@ -61,11 +61,6 @@ onMounted(async () => {
 <template>
   <ion-page>
     <ion-content>
-      <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-        <ion-fab-button color="light">
-          <ion-icon :icon="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
       <ion-list>
         <ion-item v-for="(item, index) in items" :key="index">
           <ion-avatar slot="start">
@@ -74,6 +69,12 @@ onMounted(async () => {
           <ion-label>需求 {{ item }}</ion-label>
         </ion-item>
       </ion-list>
+
+      <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+        <ion-fab-button aria-label="add" color="light">
+          <ion-icon aria-hidden :icon="addOutline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
     </ion-content>
   </ion-page>
 </template>

@@ -74,7 +74,7 @@ async function loginIonButtonClick(): Promise<void> {
           fill="clear"
           @click="loginIonButtonClick"
         >
-          <ion-icon :icon="logInOutline" />
+          <ion-icon aria-hidden :icon="logInOutline" />
           <ion-label>登录</ion-label>
         </ion-button>
       </ion-card-content>

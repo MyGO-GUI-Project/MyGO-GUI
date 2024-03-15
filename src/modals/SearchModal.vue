@@ -103,7 +103,7 @@ function switchSearchingStatus(currentStatus: string) {
           fill="clear"
           @click="searchIonButtonClick"
         >
-          <ion-icon :icon="searchOutline" />
+          <ion-icon aria-hidden :icon="searchOutline" />
           <ion-label>搜索</ion-label>
         </ion-button>
 
@@ -118,6 +118,7 @@ function switchSearchingStatus(currentStatus: string) {
           </ion-item>
         </ion-list>
         <ion-icon
+          aria-hidden
           class="searchingpage-network-error"
           :icon="alertOutline"
           v-if="searchingStatus.NetworkError"

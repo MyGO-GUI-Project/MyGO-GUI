@@ -72,7 +72,7 @@ async function signupIonButtonClick(): Promise<void> {
           fill="clear"
           @click="signupIonButtonClick"
         >
-          <ion-icon :icon="personOutline" />
+          <ion-icon aria-hidden :icon="personOutline" />
           <ion-label>注册</ion-label>
         </ion-button>
       </ion-card-content>
