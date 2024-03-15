@@ -12,7 +12,7 @@
 *:not(ion-input *) {
   border-radius: 4px !important;
 }
-ion-modal {
+* ion-modal {
   --width: fit-content;
   --height: fit-content;
   --max-width: 80vw;
