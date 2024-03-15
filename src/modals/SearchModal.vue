@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, type Ref } from 'vue'
-import { alertOutline, searchOutline } from 'ionicons/icons'
+import { searchOutline } from 'ionicons/icons'
 
 import {
   IonCardContent,
@@ -182,15 +182,6 @@ function switchSearchingStatus(currentStatus: string) {
             </ion-label>
           </ion-item>
         </ion-list>
-        <ion-icon
-          aria-hidden
-          class="searchingpage-network-error"
-          :icon="alertOutline"
-          v-if="searchingStatus.NetworkError"
-        />
-        <div class="searchpage-notfound" v-if="searchingStatus.NotFound">
-          <ion-label>未找到相应的结果</ion-label>
-        </div>
       </ion-card-content>
     </ion-card>
   </ion-modal>
@@ -199,19 +190,5 @@ function switchSearchingStatus(currentStatus: string) {
 <style scoped lang="less">
 .search-ion-button {
   display: block;
-}
-
-.searchpage-filter-label {
-  align-self: center;
-}
-.searchingpage-network-error {
-  top: 30%;
-  left: 50%;
-}
-.searchpage-notfound {
-  margin: 36%;
-}
-.searchpage-result-item {
-  padding: 2%;
 }
 </style>
