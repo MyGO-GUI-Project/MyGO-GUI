@@ -62,7 +62,7 @@ onMounted(async () => {
   <ion-page>
     <ion-content>
       <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-        <ion-fab-button>
+        <ion-fab-button color="light">
           <ion-icon :icon="add"></ion-icon>
         </ion-fab-button>
       </ion-fab>

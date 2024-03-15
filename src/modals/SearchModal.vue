@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Ref, ref, reactive } from 'vue'
+import { ref, reactive, type Ref } from 'vue'
 import { alertOutline, searchOutline } from 'ionicons/icons'
 
 import {
@@ -31,7 +31,7 @@ interface SearchResultData {
   updated_at: number
 }
 
-const query: Ref<string> = ref('')
+const searchContent: Ref<string> = ref('')
 
 const result: Ref<SearchResultData[]> = ref([])
 
@@ -40,9 +40,12 @@ function searchIonModalDidPresent() {
   searchIonSearchbar.value.$el.setFocus()
 }
 
-function updateQuery(event: any): void {
-  const content = event.target.value
-  query.value = content
+function searchIonSearchbarIonInput() {
+  // ...
+}
+
+function searchIonButtonClick() {
+  // ...
 }
 
 async function search(): Promise<void> {
@@ -86,19 +89,21 @@ function switchSearchingStatus(currentStatus: string) {
       <ion-card-content>
         <ion-searchbar
           ref="searchIonSearchbar"
+          class="ion-margin-bottom"
+          v-model="searchContent"
           :debounce="1000"
           inputmode="search"
           enterkeyhint="search"
           placeholder="搜索需求"
-          @ionInput="updateQuery"
+          @ion-input="searchIonSearchbarIonInput"
         />
 
-        <ion-button id="loginpage-login-panel-button" fill="clear" @click="search">
+        <ion-button class="search-ion-button ion-justify-content-center" fill="clear" @click="searchIonButtonClick">
           <ion-icon :icon="searchOutline" />
           <ion-label>搜索</ion-label>
         </ion-button>
 
-        <ion-spinner v-if="searchingStatus.Searching" />
+        <ion-spinner name="dots" v-if="searchingStatus.Searching" />
 
         <ion-list class="searchpage-result" v-if="searchingStatus.Fetched">
           <ion-item v-for="item in result" :key="item.id">
@@ -122,16 +127,8 @@ function switchSearchingStatus(currentStatus: string) {
 </template>
 
 <style scoped lang="less">
-ion-modal {
-  --width: fit-content;
-  --height: fit-content;
-  --border-radius: 4px;
-  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
-}
-
-#loginpage-login-panel-button {
+.search-ion-button {
   display: block;
-  justify-content: center;
 }
 
 .searchpage-filter-label {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, type Ref } from 'vue'
 import { personOutline } from 'ionicons/icons'
 
 import {
@@ -19,28 +18,15 @@ import {
 import { useToken } from '@/stores'
 import http from '@/libs/http'
 
-const username = ref(0)
-const password = ref(0)
-
 const usernameIonInput = ref()
 function signupIonModalDidPresent() {
   usernameIonInput.value.$el.setFocus()
 }
 
-function updateUsername(event: InputEvent) {
-  username.value = event.target.value
-}
-function updatePassword(event: InputEvent) {
-  password.value = event.target.value
-}
-
+const username: Ref<string> = ref('')
+const password: Ref<string> = ref('')
 const tokenStore = useToken()
-const router = useRouter()
-function returnToHome(): void {
-  router.replace('/home')
-}
-
-async function logInRequest(): Promise<void> {
+async function signupIonButtonClick(): Promise<void> {
   const data = JSON.stringify({
     password: password.value,
     username: username.value
@@ -48,7 +34,7 @@ async function logInRequest(): Promise<void> {
   const response = await http.post('/login', data)
   const token = response.headers.authorization as string
   tokenStore.setToken(token)
-  returnToHome()
+  // returnToHome()
 }
 </script>
 
@@ -64,24 +50,24 @@ async function logInRequest(): Promise<void> {
         <ion-input
           ref="usernameIonInput"
           class="ion-margin-bottom"
+          v-model="username"
           fill="outline"
           label="账号"
           label-placement="stacked"
           clearInput
-          @input="updateUsername"
         />
 
         <ion-input
           class="ion-margin-bottom"
+          v-model="password"
           type="password"
           fill="outline"
           label="密码"
           label-placement="stacked"
           clearInput
-          @input="updatePassword"
         />
 
-        <ion-button id="loginpage-login-panel-button" fill="clear" @click="logInRequest">
+        <ion-button class="signup-ion-button ion-justify-content-center" fill="clear" @click="signupIonButtonClick">
           <ion-icon :icon="personOutline" />
           <ion-label>注册</ion-label>
         </ion-button>
@@ -91,15 +77,7 @@ async function logInRequest(): Promise<void> {
 </template>
 
 <style scoped lang="less">
-ion-modal {
-  --width: fit-content;
-  --height: fit-content;
-  --border-radius: 4px;
-  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
-}
-
-#loginpage-login-panel-button {
+.signup-ion-button {
   display: block;
-  justify-content: center;
 }
 </style>
