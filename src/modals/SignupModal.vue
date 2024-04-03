@@ -3,6 +3,9 @@ import { ref, type Ref } from 'vue'
 import { personOutline } from 'ionicons/icons'
 
 import {
+  IonItem,
+  IonDatetimeButton,
+  IonDatetime,
   IonCardTitle,
   IonCardSubtitle,
   IonCardContent,
@@ -67,6 +70,11 @@ async function signupIonButtonClick(): Promise<void> {
           clearInput
         />
 
+        <ion-item lines="none">
+          <ion-label>生日</ion-label>
+          <ion-datetime-button datetime="birthday-ion-datetime" />
+        </ion-item>
+
         <ion-button
           class="signup-ion-button ion-justify-content-center"
           fill="clear"
@@ -77,6 +85,21 @@ async function signupIonButtonClick(): Promise<void> {
         </ion-button>
       </ion-card-content>
     </ion-card>
+  </ion-modal>
+
+  <ion-modal keep-contents-mounted>
+    <ion-datetime
+      id="birthday-ion-datetime"
+      value="2000-01-01"
+      min="1900-01-01"
+      max="2024-04-01"
+      presentation="date"
+      show-clear-button
+      show-default-buttons
+      cancel-text="取消"
+      clear-text="清除"
+      done-text="确定"
+    />
   </ion-modal>
 </template>
 
